@@ -55,7 +55,7 @@
         }
         $.getJSON("https://restcountries.eu/rest/v2/name/"+country,function(data){
 
-            selected_country = name
+            selected_country = data[0].translations.br
             document.styleSheets[0].addRule('.countrie.left::before','background-image: url(\"'+data[0].flag+'\")');
             inner_html = html_Insert(data[0].translations.br,data[0].flag,data[0].nativeName,
                                             data[0].languages[0].name,data[0].region,data[0].subregion,
@@ -80,7 +80,7 @@
                     $.getJSON("http://ip-api.com/json/"+data,function(data){
                         local_countrie = data.country
                         $.getJSON("https://restcountries.eu/rest/v2/name/"+x,function(data){
-                        selected_country = name
+                        selected_country = data[0].translations.br
                         document.styleSheets[0].addRule('.countrie.left::before','background-image: url(\"'+data[0].flag+'\")');
                         inner_html = html_Insert(data[0].translations.br,data[0].flag,data[0].nativeName,
                                             data[0].languages[0].name,data[0].region,data[0].subregion,
@@ -96,7 +96,7 @@
                 element.classList.add("anime")
                 clicked = true
                 $.getJSON("https://restcountries.eu/rest/v2/name/"+x,function(data){
-                    selected_country = name
+                    selected_country = data[0].translations.br
                     document.styleSheets[0].addRule('.countrie.left::before','background-image: url(\"'+data[0].flag+'\")');
                     inner_html = html_Insert(data[0].translations.br,data[0].flag,data[0].nativeName,
                                             data[0].languages[0].name,data[0].region,data[0].subregion,
