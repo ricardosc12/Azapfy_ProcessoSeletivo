@@ -4,4 +4,4 @@
 
 
 [![Project](https://img.youtube.com/vi/f5v3kZuUotk/0.jpg)](https://www.youtube.com/watch?v=f5v3kZuUotk)  
-Click on image from youtube
+Clique na imagem e abra uma nova guia
