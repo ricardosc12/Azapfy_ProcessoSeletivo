@@ -6,4 +6,4 @@
 
 
 * Pesquisa por nome.
-* Localização por obtenção de ip ( Clique no botão com nome vazio ).
+* Localização por obtenção de ip ( Clique no botão com o campo de texto vazio ).
