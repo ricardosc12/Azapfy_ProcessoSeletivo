@@ -6,8 +6,4 @@
 [![Project](https://img.youtube.com/vi/2h0RhhukLWI/0.jpg)](https://www.youtube.com/watch?v=2h0RhhukLWI)  
 *   Clique na imagem e abra uma nova guia
 
-<ul>
-  <li><a href="#prerequisites">Prerequisites</a></li>
-  <li><a href="#installation">Installation</a></li>
-</ul>
-
+* Your time should be focused on creating something amazing. A project that solves a problem and helps others
