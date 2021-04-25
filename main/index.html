@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Victare Link</title>
+        <title>The World Map</title>
         <link rel="stylesheet" href="./css/styles.css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,6 @@
         </div>
         <div id='selected' class="box" onclick="open_Website()">
             <div id="001" class="containt_box">
-                <!-- <div class=local_country></div> -->
             </div>
         </div>
         <div class="demo">
@@ -34,11 +33,17 @@
 
 
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="/scripts/autocomplete.js"></script>
+<script src="/scripts/variables.js"></script>
+
 
 <script>   
+    
+    var inner_html = ""
     var clicked = false
     var local_countrie = ""
     var selected_country = ""
+
     function open_Website(){
         window.open("https://pt.wikipedia.org/wiki/"+selected_country)
     }
@@ -49,13 +54,14 @@
             clicked = true
         }
         $.getJSON("https://restcountries.eu/rest/v2/name/"+country,function(data){
-            var name = data[0].translations.br
+
             selected_country = name
-            var flag = data[0].flag
-            var nativeName = data[0].nativeName
-            var lingua = data[0].languages[0].name
-            document.styleSheets[0].addRule('.countrie.left::before','background-image: url(\"'+flag+'\")');
-            document.getElementById("001").innerHTML = "<div class=\"countrie left\"><div class=\"info_selected\"></div></div><div class=\"countrie\"><div class=\"details_image top\">"+name+"</div><img id=\"image\" src=\""+flag+"\" alt=\"image_clicked\"><div class=\"details_image\">"+nativeName+"</div></div><div class=\"countrie right\"><div class=\"info_countrie\">Linguage:  "+lingua+"<div class=\"pointer\"></div></div><div class=\"info_countrie\">Region: "+data[0].region+"<div class=\"pointer\"></div></div><div class=\"info_countrie\">Subregion:  "+data[0].subregion+"<div class=\"pointer\"></div></div><div class=\"info_countrie\">Zone:  \""+data[0].timezones[0]+"\"<div class=\"pointer\"></div></div></div>"
+            document.styleSheets[0].addRule('.countrie.left::before','background-image: url(\"'+data[0].flag+'\")');
+            inner_html = html_Insert(data[0].translations.br,data[0].flag,data[0].nativeName,
+                                            data[0].languages[0].name,data[0].region,data[0].subregion,
+                                            data[0].timezones)
+            document.getElementById("001").innerHTML = inner_html
+
             if(country == local_countrie){
              $(".containt_box").append("<div class=local_country></div>")
             }
@@ -73,15 +79,13 @@
                 $.get("https://api.ipify.org",function(data){
                     $.getJSON("http://ip-api.com/json/"+data,function(data){
                         local_countrie = data.country
-                        console.log(local_countrie)
                         $.getJSON("https://restcountries.eu/rest/v2/name/"+x,function(data){
-                        var name = data[0].translations.br
                         selected_country = name
-                        var flag = data[0].flag
-                        var nativeName = data[0].nativeName
-                        var lingua = data[0].languages[0].name
-                        document.styleSheets[0].addRule('.countrie.left::before','background-image: url(\"'+flag+'\")');
-                        document.getElementById("001").innerHTML = "<div class=\"countrie left\"><div class=\"info_selected\"></div></div><div class=\"countrie\"><div class=\"details_image top\">"+name+"</div><img id=\"image\" src=\""+flag+"\" alt=\"image_clicked\"><div class=\"details_image\">"+nativeName+"</div></div><div class=\"countrie right\"><div class=\"info_countrie\">Linguage:  "+lingua+"<div class=\"pointer\"></div></div><div class=\"info_countrie\">Region: "+data[0].region+"<div class=\"pointer\"></div></div><div class=\"info_countrie\">Subregion:  "+data[0].subregion+"<div class=\"pointer\"></div></div><div class=\"info_countrie\">Zone:  \""+data[0].timezones[0]+"\"<div class=\"pointer\"></div></div></div>"
+                        document.styleSheets[0].addRule('.countrie.left::before','background-image: url(\"'+data[0].flag+'\")');
+                        inner_html = html_Insert(data[0].translations.br,data[0].flag,data[0].nativeName,
+                                            data[0].languages[0].name,data[0].region,data[0].subregion,
+                                            data[0].timezones)
+                        document.getElementById("001").innerHTML = inner_html
                         if(x == local_countrie){
                             $(".containt_box").append("<div class=local_country></div>")
                         }
@@ -92,13 +96,12 @@
                 element.classList.add("anime")
                 clicked = true
                 $.getJSON("https://restcountries.eu/rest/v2/name/"+x,function(data){
-                    var name = data[0].translations.br
                     selected_country = name
-                    var flag = data[0].flag
-                    var nativeName = data[0].nativeName
-                    var lingua = data[0].languages[0].name
-                    document.styleSheets[0].addRule('.countrie.left::before','background-image: url(\"'+flag+'\")');
-                    document.getElementById("001").innerHTML = "<div class=\"countrie left\"><div class=\"info_selected\"></div></div><div class=\"countrie\"><div class=\"details_image top\">"+name+"</div><img id=\"image\" src=\""+flag+"\" alt=\"image_clicked\"><div class=\"details_image\">"+nativeName+"</div></div><div class=\"countrie right\"><div class=\"info_countrie\">Linguage:  "+lingua+"<div class=\"pointer\"></div></div><div class=\"info_countrie\">Region: "+data[0].region+"<div class=\"pointer\"></div></div><div class=\"info_countrie\">Subregion:  "+data[0].subregion+"<div class=\"pointer\"></div></div><div class=\"info_countrie\">Zone:  \""+data[0].timezones[0]+"\"<div class=\"pointer\"></div></div></div>"
+                    document.styleSheets[0].addRule('.countrie.left::before','background-image: url(\"'+data[0].flag+'\")');
+                    inner_html = html_Insert(data[0].translations.br,data[0].flag,data[0].nativeName,
+                                            data[0].languages[0].name,data[0].region,data[0].subregion,
+                                            data[0].timezones)
+                    document.getElementById("001").innerHTML = inner_html
                     if(x == local_countrie){
                         $(".containt_box").append("<div class=local_country></div>")
                     }
@@ -110,119 +113,25 @@
         }
     }
     function init() {
-        // var element = document.getElementById('selected')
-        // element.classList.add("anime")
+
         $.get("https://api.ipify.org",function(data){
-            console.log(data)
             $.getJSON("http://ip-api.com/json/"+data,function(data){
                 local_countrie = data.country
-                console.log(local_countrie)
             })
         })
+
         var x = document.getElementById("where").value;
-        console.log(x)
 
         $.getJSON("https://restcountries.eu/rest/v2/all",function(data){
-            // console.log(data[100])
             for(var i = 0;i<data.length;i++){
-                $(".demo").append("<div class='countries' onclick=\"open_Box('"+data[i].name+"')\"><div class='info'><img src='"+data[i].flag+"' alt='countrie'><div class='name_countrie'>"+data[i].translations.br+"</div></div><div class='most_info'><div class='info1'><div class='list'><div class='pointer'></div><p>Capital: "+data[i].capital+"</p></div></div><div class='info1'><div class='list'><div class='pointer'></div><p>População: "+data[i].population+"</p></div></div></div></div>")
+                var countrie = list_countries(data[i].name,data[i].flag,data[i].translations.br,data[i].capital,data[i].population)
+                $(".demo").append(countrie)
                 }
             }) 
     }
+
     window.onload = init
-</script>
 
-<script>
-    var current_countrie = ""
-    function autocomplete(inp, arr) {
-
-    var currentFocus;
-    inp.addEventListener("input", function(e) {
-      var a, b, i, val = this.value;
-
-      closeAllLists();
-      if (!val) { return false;}
-      currentFocus = -1;
-      a = document.createElement("DIV");
-      a.setAttribute("id", this.id + "autocomplete-list");
-      a.setAttribute("class", "autocomplete-items");
-
-      this.parentNode.appendChild(a);
-
-      for (i = 0; i < arr.length; i++) {
-
-        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-
-          b = document.createElement("DIV");
-
-          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-          b.innerHTML += arr[i].substr(val.length);
-
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-
-          b.addEventListener("click", function(e) {
-              inp.value = this.getElementsByTagName("input")[0].value;
-              closeAllLists();
-          });
-          a.appendChild(b);
-        }
-      }
-    });
-    inp.addEventListener("keydown", function(e) {
-      var x = document.getElementById(this.id + "autocomplete-list");
-      if (x) x = x.getElementsByTagName("div");
-      if (e.keyCode == 40) {
-        currentFocus++;
-        addActive(x);
-      } else if (e.keyCode == 38) {
-        currentFocus--;
-        addActive(x);
-      } else if (e.keyCode == 13) {
-        var selected = document.getElementById('where')
-        open_Box(selected.value)
-        if (currentFocus > -1) {
-          if (x) x[currentFocus].click();
-        }
-      }
-    });
-    function addActive(x) {
-        if (!x) return false;
-        removeActive(x);
-        if (currentFocus >= x.length) currentFocus = 0;
-        if (currentFocus < 0) currentFocus = (x.length - 1);
-        x[currentFocus].classList.add("autocomplete-active");
-    }
-    function removeActive(x) {
-        for (var i = 0; i < x.length; i++) {
-        x[i].classList.remove("autocomplete-active");
-        }
-    }
-    function closeAllLists(elmnt) {
-        var x = document.getElementsByClassName("autocomplete-items");
-        for (var i = 0; i < x.length; i++) {
-            if (elmnt != x[i] && elmnt != inp) {
-                x[i].parentNode.removeChild(x[i]);
-            }
-        }
-    }
-    document.addEventListener("click", function (e) {
-        var x = document.getElementById("where").value;
-        if(x!="" & x!=current_countrie){
-            open_Box(x)
-            current_countrie = x
-        }
-        closeAllLists(e.target);
-  });
-}
-
-
-    var countries = []
-    $.getJSON("https://restcountries.eu/rest/v2/all",function(data){
-        for(var i = 0;i<data.length;i++){
-            countries.push(data[i].name)
-            }
-    }) 
-    autocomplete(document.getElementById("where"), countries);
 </script>
 
 </body>
