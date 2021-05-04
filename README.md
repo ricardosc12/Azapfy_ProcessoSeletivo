@@ -13,7 +13,7 @@ on Youtube
 
 * Adicionado uma função para alterar a forma como os dados do país selecionado é obtido, Memória(preload) / Get: API.
   * Este causara problema quando diversas requisições eram feitas, gerando um delay pela api para um resposta.
-  * Caso um demora de 200ms, uma animação o alertará
+  * Caso a demora seja de +200ms, uma animação o alertará
 * Novas animações criadas para a espera de resposta da API, como obtenção de todos os países, país expecífico.
   * O mesmo sugere para a listagem de países. Caso a api não responda.
 * Tratamento sobre entrada de dados, caso o nome não seja encontrado, uma imagem o alertará.
