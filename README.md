@@ -12,6 +12,7 @@ on Youtube
 # Atualizações
 
 * Adicionado uma função para alterar a forma como os dados do país selecionado é obtido, Memória(preload) / Get: API.
+  * Este causará problema quando diversas requisições era feita, isso gera um delay pela api para um resposta    
 * Novas animações criadas para a espera de resposta da API, como obtenção de todos os países, país expecífico.
 * Tratamento sobre entrada de dados, caso o nome não seja encontrado, uma imagem o alertará.
 * Estrutura do código reorganizada, minimizando blocos repetitivos.
