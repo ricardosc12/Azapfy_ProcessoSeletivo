@@ -19,5 +19,5 @@ on Youtube
 * Tratamento sobre entrada de dados, caso o nome não seja encontrado, uma imagem o alertará.
 * Estrutura do código reorganizada, minimizando blocos repetitivos.
 * Correção em nomes de países cujo o símbolo " ' " fora encontrado.
-* Adicionado texto para mostragem de espera pela api para obter IP regional. (" Getting local contry ").
+* Adicionado texto para mostragem de espera pela api para obter IP regional. (" Getting local country ").
 * Mudança na animação que correnponde ao país residido pelo usuário.
