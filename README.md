@@ -7,3 +7,7 @@ on Youtube
 * Listagem de todos países.
 * Pesquisa por nome.
 * Localização por obtenção de ip ( Clique no botão com o campo de texto vazio ).
+
+
+# Atualizações
+
