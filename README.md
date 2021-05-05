@@ -10,7 +10,7 @@ on Youtube (v1.0)(https://www.youtube.com/watch?v=2h0RhhukLWI)
 
 
 # Atualizações
-(deve haver uma interface entre o navegador e projeto -> liveserver.Visual Studio Code)
+OBS:(deve haver uma interface entre o navegador e projeto -> liveserver.Visual Studio Code)
 
 * Adicionado uma função para alterar a forma como os dados do país selecionado é obtido, Memória(preload) / Get: API.
   * Este causara problema quando diversas requisições eram feitas, gerando um delay pela api para uma resposta.
