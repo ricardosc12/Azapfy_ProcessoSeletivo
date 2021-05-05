@@ -13,7 +13,7 @@ on Youtube (v1.0)(https://www.youtube.com/watch?v=2h0RhhukLWI)
 (deve haver uma interface entre o navegador e projeto -> liveserver.Visual Studio Code)
 
 * Adicionado uma função para alterar a forma como os dados do país selecionado é obtido, Memória(preload) / Get: API.
-  * Este causara problema quando diversas requisições eram feitas, gerando um delay pela api para um resposta.
+  * Este causara problema quando diversas requisições eram feitas, gerando um delay pela api para uma resposta.
   * Caso a demora seja de +200ms, uma animação o alertará.
 * Novas animações foram criadas para a espera de resposta da API, como obtenção de todos os países e país expecífico.
   * O mesmo sugere para a listagem de países. Caso a api não responda.
