@@ -1,4 +1,7 @@
 
+
+// Insere na janela 'box' as informações referente ao país selecionado
+
 function html_Insert(name,flag,nativeName,lingua,region,subregion,timezones){
     var inner_html = 
         "<div class=\"countrie left\">"+
@@ -33,7 +36,11 @@ function html_Insert(name,flag,nativeName,lingua,region,subregion,timezones){
     return inner_html
 }
 
+// Insere na list_countries, todos os componentes referentes a cada país
+
 function list_countries(name,flag,nameBr,capital,population) {
+    if(capital == "") capital="There is no capital"
+    if(population == "0") population="Nonexistent"
     var countrie = 
     "<div class='countries' onclick=\"open_Box('"+name+"')\">"+
             "<div class='info'>"+

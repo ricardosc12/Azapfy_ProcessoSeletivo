@@ -1,7 +1,8 @@
 
+// Função responsável por autocompletar sugestão inserida pelo usuário.
+
 var current_countrie = ""
 function autocomplete(inp, arr) {
-
 var currentFocus;
 inp.addEventListener("input", function(e) {
     var a, b, i, val = this.value;
@@ -80,12 +81,3 @@ document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
 }
-
-
-var countries = []
-$.getJSON("https://restcountries.eu/rest/v2/all",function(data){
-    for(var i = 0;i<data.length;i++){
-        countries.push(data[i].name)
-        }
-}) 
-autocomplete(document.getElementById("where"), countries);
