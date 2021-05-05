@@ -21,3 +21,10 @@ on Youtube
 * Correção em nomes de países cujo o símbolo " ' " fora encontrado.
 * Adicionado texto para mostragem de espera pela api para obter IP regional. (" Getting local country ").
 * Mudança na animação que correnponde ao país residido pelo usuário.
+
+![timeout_a](https://user-images.githubusercontent.com/25700237/117083776-d5f11180-ad1b-11eb-8311-da710344b4bf.PNG)
+![timeout_b](https://user-images.githubusercontent.com/25700237/117083777-d8536b80-ad1b-11eb-87ff-17276dd25ea8.PNG)
+![load](https://user-images.githubusercontent.com/25700237/117083782-da1d2f00-ad1b-11eb-9ce6-df9c0f5f9b7a.PNG)
+![preload](https://user-images.githubusercontent.com/25700237/117083783-db4e5c00-ad1b-11eb-8d6e-136870576323.PNG)
+![boneco](https://user-images.githubusercontent.com/25700237/117083801-ea350e80-ad1b-11eb-8245-faf0c8921c51.PNG)
+
