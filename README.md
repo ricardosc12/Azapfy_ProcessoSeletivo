@@ -31,5 +31,6 @@ on Youtube (v1.0)
 ![preload](https://user-images.githubusercontent.com/25700237/117083783-db4e5c00-ad1b-11eb-8d6e-136870576323.PNG)
 ![boneco](https://user-images.githubusercontent.com/25700237/117083801-ea350e80-ad1b-11eb-8245-faf0c8921c51.PNG)
 
-[![image](https://user-images.githubusercontent.com/25700237/117085767-0d15f180-ad21-11eb-96a2-8533f3179e75.png)](https://www.youtube.com/watch?v=YFdp4RJkwdQ)  
+[![image](https://user-images.githubusercontent.com/25700237/117085767-0d15f180-ad21-11eb-96a2-8533f3179e75.png)](https://www.youtube.com/watch?v=YFdp4RJkwdQ)
+on Youtube (v1.1)
 
