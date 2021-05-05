@@ -1,0 +1,130 @@
+.timeout_error {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: 5%;
+    width: 90%;
+    height: 90%;
+    z-index: 99;
+    background:linear-gradient(to bottom right, #232a33 40%, #333b44);
+    transition: all 0.5s;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.2),
+                inset 1px 1px 10px rgba(0,0,0,0.5),
+                inset -1px -1px 10px rgba(51, 59, 68,0.5);
+    border-radius: 5px;
+}
+
+.timeout_error h1, p {
+    display: flex;
+    position: absolute;
+    bottom: 35%;
+    font-family: 'Roboto Mono', monospace;
+    letter-spacing: 1px;
+    font-size: 12px;
+    color: rgb(204, 209, 219);
+}
+.timeout_error p {
+    top: 2%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    right: 2%;
+    height: 25px;
+    width: 110px;
+    transition: letter-spacing 0.5s;
+    /* background-color: red; */
+}
+.timeout_error:hover > p{
+    cursor: pointer;
+    letter-spacing: 2px;
+    box-shadow: 15px 15px 20px rgba(0,0,0,.1),
+                -15px -15px 20px rgba(65, 74, 94, 0.1),
+                inset -3px -3px 5px rgba(51, 59, 68,.5),
+                inset 3px 3px 5px rgba(0,0,0,.1);
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  background: #ffffff;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+.loader {
+  color: #ffffff;
+  text-indent: -9999em;
+  margin: 88px auto;
+  position: relative;
+  font-size: 11px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+.loader:before {
+  left: -1.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 1.5em;
+}
+@-webkit-keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+@keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+
+.not_found {
+    right: 46.7%;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 100px;
+    top: 40%;
+
+}
+
+.img_not_countrie {
+  display: flex;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  bottom: 40%;
+  background-image: url(/images/error_image.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 99;
+  filter: invert(60%);
+}

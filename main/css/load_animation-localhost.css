@@ -1,0 +1,14 @@
+
+
+.load_animation-localhost{
+    display: flex;
+    position: absolute;
+    width: auto;
+    height: auto;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.651);
+    right: 20px;
+    top: 20px;
+
+}
