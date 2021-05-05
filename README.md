@@ -18,7 +18,7 @@ on Youtube
   * O mesmo sugere para a listagem de países. Caso a api não responda.
 * Tratamento sobre entrada de dados, caso o nome não seja encontrado, uma imagem o alertará.
 * Estrutura do código reorganizada, minimizando blocos repetitivos.
-  * Separação de arquivos, cuja funcionalidade correnpondam entre os mesmos elementos
+  * Separação de arquivos, cuja funcionalidade correnpondam entre os mesmos elementos.
 * Correção em nomes de países cujo o símbolo " ' " fora encontrado.
 * Adicionado texto para mostragem de espera pela api para obter IP regional. (" Getting local country ").
 * Mudança na animação que correnponde ao país residido pelo usuário.
