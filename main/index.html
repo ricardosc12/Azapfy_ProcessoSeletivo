@@ -3,137 +3,112 @@
     <head>
         <title>The World Map</title>
         <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="./css/load_animation.css">
+        <link rel="stylesheet" href="./css/timeout_animation.css">
+        <link rel="stylesheet" href="./css/load_animation-localhost.css">
+        <link rel="stylesheet" href="./css/auto-complete.css">
+        <link rel="stylesheet" href="./css/input_label.css">
+        
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 <body>
 
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-<div class="container">
+<div class="container">    
     <div class="back_head"></div>
+
     <div class='content'>
+
         <div class = "head">
-
-                <div class="form__group field">
-                    <input type="input" class="form__field" placeholder="Countrie" name="name" id='where' required  autocomplete="off"/>
-                    <label for="name" class="form__label">Where is my Mind</label>
-                </div>
-                <div class="button" onclick="search()"></div>
-
+            <div onclick="set_preload()" class='pre_load'>True</div>
+            <div class="form__group field">
+                <input type="input" class="form__field" placeholder="Countrie" name="name" id='where' required  autocomplete="off"/>
+                <label for="name" class="form__label">Where is my mind...</label>
+            </div>
+            <div class="button" onclick="search()"></div>
         </div>
+
         <div id='selected' class="box" onclick="open_Website()">
             <div id="001" class="containt_box">
             </div>
         </div>
-        <div class="demo">
 
+        <div class="list_countries">
         </div>
+
     </div>
 
 </div>
 
 
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="/scripts/autocomplete.js"></script>
 <script src="/scripts/variables.js"></script>
+<script src="/scripts/load_animation.js"></script>
+<script src="/scripts/load_timeout.js"></script>
+<script src="/scripts/set_get_countries.js"></script>
+<script src="/scripts/autocomplete.js"></script>
+<script src="/scripts/init.js"></script>
+<script src="/scripts/pre_load.js"></script>
+<script src="/scripts/load_animation-localhost.js"></script>
+<script src="/scripts/animation_box.js"></script>
+
 
 
 <script>   
     
-    var inner_html = ""
-    var clicked = false
-    var local_countrie = ""
-    var selected_country = ""
+    var clicked = false // Controle de janela
+    var local_countrie = null; // Localização atual do IP
+    var selected_country = "" // País selecionado
+    var data_countries; // Armazena os países retornados pela Api.
+    var unload = true; // Deverá ser false, quando a api retornar os resultados.
 
+    // Abre o wikipedia com o país selecionado
     function open_Website(){
+        if(unload) return
+
         window.open("https://pt.wikipedia.org/wiki/"+selected_country)
     }
+
+    // Inicia a animação para mostragem do país selecionado
     function open_Box(country){
-        var element = document.getElementById('selected')
-        if(clicked == false){
-            element.classList.add("anime")
+        if(unload) return      
+
+        if(!clicked){
+            add_animationBox()
             clicked = true
         }
-        $.getJSON("https://restcountries.eu/rest/v2/name/"+country,function(data){
 
-            selected_country = data[0].translations.br
-            document.styleSheets[0].addRule('.countrie.left::before','background-image: url(\"'+data[0].flag+'\")');
-            inner_html = html_Insert(data[0].translations.br,data[0].flag,data[0].nativeName,
-                                            data[0].languages[0].name,data[0].region,data[0].subregion,
-                                            data[0].timezones)
-            document.getElementById("001").innerHTML = inner_html
+        if(pre_load) set_countrieSelect(country,false)
+        else get_countrieSelect(country)
 
-            if(country == local_countrie){
-             $(".containt_box").append("<div class=local_country></div>")
-            }
-            }) 
     }
-    
+
+    // Inicia a animação para a mostragem do país buscado
     function search(){
-        var element = document.getElementById('selected')
-        if(clicked == false){
-            var x = document.getElementById("where").value;
-            if(x==""){
-                x=local_countrie;
-                element.classList.add("anime")
-                clicked = true
-                $.get("https://api.ipify.org",function(data){
-                    $.getJSON("http://ip-api.com/json/"+data,function(data){
-                        local_countrie = data.country
-                        $.getJSON("https://restcountries.eu/rest/v2/name/"+x,function(data){
-                        selected_country = data[0].translations.br
-                        document.styleSheets[0].addRule('.countrie.left::before','background-image: url(\"'+data[0].flag+'\")');
-                        inner_html = html_Insert(data[0].translations.br,data[0].flag,data[0].nativeName,
-                                            data[0].languages[0].name,data[0].region,data[0].subregion,
-                                            data[0].timezones)
-                        document.getElementById("001").innerHTML = inner_html
-                        if(x == local_countrie){
-                            $(".containt_box").append("<div class=local_country></div>")
-                        }
-                        }) 
-                    })
-                })
-            }else{
-                element.classList.add("anime")
-                clicked = true
-                $.getJSON("https://restcountries.eu/rest/v2/name/"+x,function(data){
-                    selected_country = data[0].translations.br
-                    document.styleSheets[0].addRule('.countrie.left::before','background-image: url(\"'+data[0].flag+'\")');
-                    inner_html = html_Insert(data[0].translations.br,data[0].flag,data[0].nativeName,
-                                            data[0].languages[0].name,data[0].region,data[0].subregion,
-                                            data[0].timezones)
-                    document.getElementById("001").innerHTML = inner_html
-                    if(x == local_countrie){
-                        $(".containt_box").append("<div class=local_country></div>")
-                    }
-                }) 
-            }
+        if(unload) return
+
+
+        if(!clicked){
+            
+            var element = document.getElementById("where").value;
+            if(element=="") element=local_countrie 
+            add_animationBox()
+            clicked = true
+            if(pre_load) set_countrieSelect(element,false)
+            else get_countrieSelect(element)
+
+
         }else {
-            element.classList.remove("anime")
+            remove_animationBox()
             clicked = false
         }
     }
-    function init() {
-
-        $.get("https://api.ipify.org",function(data){
-            $.getJSON("http://ip-api.com/json/"+data,function(data){
-                local_countrie = data.country
-            })
-        })
-
-        var x = document.getElementById("where").value;
-
-        $.getJSON("https://restcountries.eu/rest/v2/all",function(data){
-            for(var i = 0;i<data.length;i++){
-                var countrie = list_countries(data[i].name,data[i].flag,data[i].translations.br,data[i].capital,data[i].population)
-                $(".demo").append(countrie)
-                }
-            }) 
-    }
-
-    window.onload = init
-
+   
 </script>
+
+
 
 </body>
 </html>
