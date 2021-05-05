@@ -22,6 +22,7 @@ on Youtube (v1.0)(https://www.youtube.com/watch?v=2h0RhhukLWI)
 * Correção em nomes de países cujo o símbolo " ' " fora encontrado.
 * Adicionado texto para mostragem de espera pela api para obter IP regional. (" Getting local country ").
 * Mudança na animação que correnponde ao país residido pelo usuário.
+* Outras alterações minuciosas foram feitas para o correto funcionamento de todas funções.
 
 # Imagens referentes a algunas alterações visuais
 
